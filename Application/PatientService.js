@@ -18,6 +18,10 @@ class PatientService {
     getPatientById(id) {
         return this.patientRepository.findById(id);
     }
+
+    deletePatient(id) {
+        return this.patientRepository.deleteById(id);
+    }
 }
 
 module.exports = PatientService;

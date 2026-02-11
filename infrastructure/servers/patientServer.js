@@ -61,6 +61,17 @@ const swaggerDocument = {
                     200: { description: 'Paciente encontrado' },
                     404: { description: 'Paciente no encontrado' }
                 }
+            },
+            delete: {
+                summary: 'Eliminar un paciente',
+                tags: ['Pacientes'],
+                parameters: [
+                    { name: 'id', in: 'path', required: true, schema: { type: 'integer' } }
+                ],
+                responses: {
+                    200: { description: 'Paciente eliminado' },
+                    404: { description: 'Paciente no encontrado' }
+                }
             }
         }
     }

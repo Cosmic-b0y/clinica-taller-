@@ -11,6 +11,10 @@ class PatientServicePort {
     getPatientById() {
         throw new Error('No implementado');
     }
+
+    deletePatient() {
+        throw new Error('No implementado');
+    }
 }
 
 module.exports = PatientServicePort;

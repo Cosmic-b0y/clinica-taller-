@@ -4,7 +4,7 @@ const express = require('express');
 function createPatientRouter(patientService) {
     const router = express.Router();
 
-    // POST - registrar un paciente
+    // POST - para registrar un paciente
     router.post('/', (req, res) => {
         const { nombre, email } = req.body;
         if (!nombre || !email) {
@@ -14,7 +14,7 @@ function createPatientRouter(patientService) {
         res.status(201).json(patient);
     });
 
-    // GET - consultar todos los pacientes
+    // GET - para consultar todos los pacientes
     router.get('/', (req, res) => {
         const patients = patientService.getAllPatients();
         res.json(patients);
@@ -27,6 +27,15 @@ function createPatientRouter(patientService) {
             return res.status(404).json({ error: 'Paciente no encontrado' });
         }
         res.json(patient);
+    });
+
+    // DELETE - para eliminar un paciente
+    router.delete('/:id', (req, res) => {
+        const deleted = patientService.deletePatient(Number(req.params.id));
+        if (!deleted) {
+            return res.status(404).json({ error: 'Paciente no encontrado' });
+        }
+        res.json({ message: 'Paciente eliminado correctamente' });
     });
 
     return router;
